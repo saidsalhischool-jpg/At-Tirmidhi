@@ -38,11 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentScroll = window.pageYOffset;
 
         if (currentScroll > 100) {
-            navbar.style.padding = '12px 60px';
+            navbar.style.padding = '10px 60px';
             navbar.style.background = 'rgba(10, 10, 20, 0.98)';
             navbar.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.4)';
         } else {
-            navbar.style.padding = '20px 60px';
+            navbar.style.padding = '12px 60px';
             navbar.style.background = 'linear-gradient(180deg, rgba(10, 10, 20, 0.98) 0%, rgba(10, 10, 20, 0.9) 100%)';
             navbar.style.boxShadow = 'none';
         }
@@ -58,9 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth <= 768) {
             const currentScroll = window.pageYOffset;
             if (currentScroll > 100) {
-                navbar.style.padding = '12px 25px';
+                navbar.style.padding = '8px 25px';
             } else {
-                navbar.style.padding = '15px 25px';
+                navbar.style.padding = '10px 25px';
             }
         }
     });
@@ -170,6 +170,57 @@ document.addEventListener('DOMContentLoaded', function() {
             const speed = 0.05 + (i * 0.02);
             symbol.style.transform = `translateY(${scrolled * speed}px)`;
         });
+    });
+
+    // Drag to Scroll - Grab Hand functionality
+    const body = document.body;
+    body.classList.add('grab-scroll');
+
+    let isGrabbing = false;
+    let startY = 0;
+    let scrollStart = 0;
+
+    body.addEventListener('mousedown', (e) => {
+        // Don't activate on interactive elements
+        if (e.target.closest('a, button, input, textarea, select, .menu-toggle, .nav-links, .video-link')) {
+            return;
+        }
+
+        isGrabbing = true;
+        startY = e.clientY;
+        scrollStart = window.pageYOffset;
+        body.classList.add('grabbing');
+        e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isGrabbing) return;
+
+        const deltaY = startY - e.clientY;
+        window.scrollTo(0, scrollStart + deltaY);
+    });
+
+    document.addEventListener('mouseup', () => {
+        isGrabbing = false;
+        body.classList.remove('grabbing');
+    });
+
+    document.addEventListener('mouseleave', () => {
+        isGrabbing = false;
+        body.classList.remove('grabbing');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuToggle && navLinks && navLinks.classList.contains('active')) {
+            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        }
     });
 
     // Set active nav link based on current page

@@ -30,14 +30,6 @@ body {
     font-size: 1.25rem;
 }
 
-/* ============ CUSTOM CURSOR ============ */
-body {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23d4af37'/%3E%3C/svg%3E"), auto;
-}
-
-a, button, .clickable {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23d4af3740'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23d4af37'/%3E%3C/svg%3E"), pointer;
-}
 
 /* ============ ISLAMIC SVG SYMBOLS ============ */
 .islamic-symbols {
@@ -113,7 +105,7 @@ a, button, .clickable {
     top: 0;
     right: 0;
     left: 0;
-    padding: 20px 60px;
+    padding: 12px 60px;
     background: linear-gradient(180deg, rgba(10, 10, 20, 0.98) 0%, rgba(10, 10, 20, 0.9) 100%);
     backdrop-filter: blur(20px);
     z-index: 1000;
@@ -213,33 +205,77 @@ a, button, .clickable {
     width: 100%;
 }
 
-/* Mobile Menu Toggle */
+/* Mobile Menu Toggle - Improved */
 .menu-toggle {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
     z-index: 1001;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 2px;
-    background: var(--gold-royal);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
 
+.menu-toggle:hover {
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.1));
+    border-color: var(--gold-royal);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.menu-toggle span {
+    width: 24px;
+    height: 3px;
+    background: var(--gold-royal);
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+}
+
+.menu-toggle.active {
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.15));
+}
+
 .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
 .menu-toggle.active span:nth-child(2) {
     opacity: 0;
+    transform: scaleX(0);
 }
 
 .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Drag to Scroll - Grab Hand Cursor */
+body.grab-scroll {
+    cursor: grab;
+    cursor: -webkit-grab;
+}
+
+body.grab-scroll:active,
+body.grabbing {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+}
+
+body.grab-scroll a,
+body.grab-scroll button,
+body.grab-scroll .clickable,
+body.grab-scroll input,
+body.grab-scroll textarea,
+body.grab-scroll select,
+body.grab-scroll .nav-links a,
+body.grab-scroll .menu-toggle {
+    cursor: pointer;
 }
 
 /* ============ HERO SECTION ============ */
@@ -338,6 +374,106 @@ a, button, .clickable {
     max-width: 1000px;
 }
 
+/* Hero Card with Integrated Profile */
+.hero-card {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+.hero-card-inner {
+    position: relative;
+    padding: 150px 80px 60px;
+    background: linear-gradient(180deg, rgba(10, 15, 30, 0.85) 0%, rgba(15, 25, 45, 0.75) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.4);
+    border-radius: 20px 20px 50% 50% / 20px 20px 30% 30%;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.hero-card-arch {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 22px 22px 52% 52% / 22px 22px 32% 32%;
+    pointer-events: none;
+}
+
+/* Profile Image Integrated */
+.hero-profile-integrated {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.profile-frame {
+    position: relative;
+    width: 170px;
+    height: 170px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    border: 4px solid var(--gold-royal);
+    box-shadow:
+        0 0 0 6px rgba(10, 15, 30, 0.9),
+        0 0 0 10px rgba(212, 175, 55, 0.3),
+        0 15px 40px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 0 6px rgba(10, 15, 30, 0.9),
+        0 0 0 12px rgba(212, 175, 55, 0.5),
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(212, 175, 55, 0.3);
+}
+
+.profile-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 190px;
+    height: 190px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    animation: ringPulse 3s ease-in-out infinite;
+}
+
+.profile-ring-2 {
+    width: 210px;
+    height: 210px;
+    border-color: rgba(212, 175, 55, 0.15);
+    animation-delay: 1.5s;
+}
+
+@keyframes ringPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+}
+
+/* Adjust badge and title spacing for integrated profile */
+.hero-card-inner .hero-badge {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.hero-card-inner h1 {
+    margin: 0;
+}
+
 /* Decorative Mihrab Frame */
 .mihrab-frame {
     position: relative;
@@ -389,7 +525,7 @@ a, button, .clickable {
 
 .hero h1 {
     font-family: 'Amiri', serif;
-    font-size: 5rem;
+    font-size: 3.8rem;
     font-weight: 700;
     color: var(--text-light);
     margin-bottom: 15px;
@@ -401,7 +537,7 @@ a, button, .clickable {
 .hero h1 span {
     color: var(--gold-royal);
     display: block;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 400;
     margin-top: 10px;
     font-family: 'Amiri', serif;
@@ -517,37 +653,59 @@ section {
     position: relative;
 }
 
+/* Decorative Title Container */
 .section-header h2 {
-    font-family: 'Amiri', serif;
-    font-size: 3.5rem;
+    font-family: 'Aref Ruqaa', 'Amiri', serif;
+    font-size: 3.2rem;
+    font-weight: 700;
     color: var(--gold-royal);
     margin-bottom: 25px;
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-shadow:
+        0 0 40px rgba(212, 175, 55, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+
+/* Stars on Both Sides of Title */
+.section-title-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.section-title-wrapper .star-decoration {
+    color: var(--gold-royal);
+    font-size: 1.8rem;
+    opacity: 0.9;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    animation: starPulse 3s ease-in-out infinite;
+}
+
+.section-title-wrapper .star-decoration:first-child {
+    animation-delay: 0s;
+}
+
+.section-title-wrapper .star-decoration:last-child {
+    animation-delay: 1.5s;
+}
+
+@keyframes starPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Title Text with Inline Stars */
+.section-header h2 .title-text {
+    position: relative;
     display: inline-block;
-    text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
-}
-
-/* Islamic Star Decorations */
-.section-header h2::before,
-.section-header h2::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Cpolygon points='25,2 32,18 50,18 36,29 42,47 25,37 8,47 14,29 0,18 18,18' fill='%23d4af37'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.7;
-}
-
-.section-header h2::before {
-    right: -50px;
-}
-
-.section-header h2::after {
-    left: -50px;
+    padding: 0 10px;
 }
 
 .section-header p {
@@ -1141,8 +1299,8 @@ section {
 /* ============ BOOKS SECTION ============ */
 .books-section {
     background:
-        linear-gradient(180deg, rgba(27, 38, 59, 0.88) 0%, rgba(10, 10, 20, 0.92) 100%),
-        url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80') center/cover no-repeat fixed;
+        linear-gradient(180deg, rgba(27, 38, 59, 0.90) 0%, rgba(10, 10, 20, 0.94) 100%),
+        url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=1920&q=80') center/cover no-repeat fixed;
 }
 
 .books-showcase {
@@ -1882,14 +2040,14 @@ footer .heart {
 }
 
 @media (max-width: 1200px) {
-    .hero h1 { font-size: 4rem; }
+    .hero h1 { font-size: 3.5rem; }
     .scholars-grid { grid-template-columns: 1fr; gap: 60px; }
     .method-cards { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1024px) {
-    .hero h1 { font-size: 3.5rem; }
-    .hero h1 span { font-size: 2rem; }
+    .hero h1 { font-size: 3rem; }
+    .hero h1 span { font-size: 1.7rem; }
     .book-feature { grid-template-columns: 1fr; text-align: center; }
     .timeline::before { right: 30px; }
     .timeline-item, .timeline-item:nth-child(even) {
@@ -1922,40 +2080,88 @@ footer .heart {
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 15px 25px;
-        flex-direction: column;
-        gap: 20px;
+        padding: 10px 25px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .menu-toggle {
         display: flex;
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
     }
 
     .nav-links {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(180deg, rgba(10, 10, 20, 0.98) 0%, rgba(13, 27, 42, 0.98) 100%);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
         display: none;
         width: 100%;
-        padding: 20px 0;
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
     }
 
     .nav-links.active {
         display: flex;
+        max-height: 500px;
+        padding: 15px 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
     }
 
     .nav-links a {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        display: block;
+        padding: 18px 25px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: linear-gradient(90deg, rgba(212, 175, 55, 0.15), transparent);
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .logo {
+        font-size: 1.6rem;
     }
 
     section { padding: 80px 25px; }
-    .hero h1 { font-size: 2.8rem; }
+    .hero h1 { font-size: 2.5rem; }
+    .hero h1 span { font-size: 1.5rem; }
     .hero-subtitle { font-size: 1.3rem; }
     .hero-dates { flex-direction: column; gap: 25px; }
+
+    /* Hero card responsive */
+    .hero-card-inner { padding: 130px 50px 50px; }
+    .profile-frame { width: 140px; height: 140px; }
+    .hero-profile-integrated { top: -40px; }
+    .profile-ring { width: 160px; height: 160px; }
+    .profile-ring-2 { width: 180px; height: 180px; }
+    .hero-card-inner .hero-badge { margin-top: 15px; }
     .section-header h2 { font-size: 2.5rem; }
     .section-header h2::before, .section-header h2::after { display: none; }
     .bio-grid { grid-template-columns: 1fr; max-width: 500px; }
@@ -1980,9 +2186,18 @@ footer .heart {
 }
 
 @media (max-width: 576px) {
-    .hero h1 { font-size: 2.2rem; }
-    .hero h1 span { font-size: 1.5rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero h1 span { font-size: 1.3rem; }
     .hero-subtitle { font-size: 1.1rem; }
+
+    /* Hero card small screens */
+    .hero-card-inner { padding: 115px 25px 40px; }
+    .profile-frame { width: 120px; height: 120px; }
+    .hero-profile-integrated { top: -35px; }
+    .profile-ring { width: 140px; height: 140px; }
+    .profile-ring-2 { width: 155px; height: 155px; }
+    .hero-card-inner .hero-badge { margin-top: 10px; font-size: 0.9rem; padding: 8px 20px; }
+    .profile-img { border-width: 3px; }
     .section-header h2 { font-size: 2rem; }
     .date-box { padding: 20px 30px; }
     .date-box .year { font-size: 2.2rem; }
@@ -1998,12 +2213,20 @@ footer .heart {
 }
 
 @media (max-width: 400px) {
-    .hero h1 { font-size: 1.8rem; }
-    .hero h1 span { font-size: 1.2rem; }
+    .hero h1 { font-size: 1.7rem; }
+    .hero h1 span { font-size: 1.1rem; }
     .logo { font-size: 1.5rem; }
     .logo-icon { width: 35px; height: 35px; }
     section { padding: 60px 15px; }
     .section-header { margin-bottom: 60px; }
     .section-header h2 { font-size: 1.7rem; }
     .section-header p { font-size: 1.1rem; }
+
+    /* Hero card extra small */
+    .hero-card-inner { padding: 100px 15px 35px; }
+    .profile-frame { width: 100px; height: 100px; }
+    .hero-profile-integrated { top: -30px; }
+    .profile-ring { width: 120px; height: 120px; }
+    .profile-ring-2 { width: 135px; height: 135px; }
+    .hero-card-inner .hero-badge { margin-top: 8px; font-size: 0.8rem; padding: 6px 15px; }
 }
