@@ -23,7 +23,9 @@
       "Bash(gh repo view:*)",
       "Bash(git mv:*)",
       "WebFetch(domain:www.freepik.com)",
-      "Bash(unzip:*)"
+      "Bash(unzip:*)",
+      "Bash(cmd /c copy:*)",
+      "Bash(git rm:*)"
     ]
   }
 }
