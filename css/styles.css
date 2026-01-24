@@ -2172,8 +2172,45 @@ footer .heart {
     .method-cards { padding: 0 20px; }
     .trial-content { padding: 50px 30px; }
     .death-card { padding: 50px 30px; }
-    .book-feature { padding: 40px 25px; gap: 40px; }
-    .book-info h3 { font-size: 2rem; }
+    .book-feature {
+        padding: 30px 20px;
+        gap: 30px;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .book-feature:nth-child(even) {
+        direction: rtl;
+    }
+    .book-image {
+        display: flex;
+        justify-content: center;
+    }
+    .book-image img {
+        max-width: 250px;
+        width: 100%;
+    }
+    .book-badge {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .book-info h3 { font-size: 1.8rem; }
+    .book-info p { font-size: 1.1rem; }
+    .book-features-list {
+        text-align: right;
+    }
+    .book-features-list li {
+        justify-content: flex-start;
+        font-size: 1rem;
+    }
+    .shamail-gallery {
+        flex-direction: column !important;
+        align-items: center;
+    }
+    .shamail-gallery img {
+        height: auto !important;
+        max-width: 220px !important;
+        width: 100% !important;
+    }
 
     .videos-grid {
         flex-direction: column;
@@ -2208,11 +2245,19 @@ footer .heart {
     .trial-content h3 { font-size: 2rem; }
     .death-card h3 { font-size: 2rem; }
     .death-year { font-size: 3.5rem; }
-    .shamail-gallery { flex-direction: column !important; }
-    .shamail-gallery img { height: 250px !important; }
+    .book-feature { padding: 25px 15px; gap: 25px; }
+    .book-image img { max-width: 200px; }
+    .book-info h3 { font-size: 1.5rem; }
+    .shamail-gallery img { max-width: 180px !important; }
 }
 
 @media (max-width: 400px) {
+    .book-feature { padding: 20px 12px; gap: 20px; }
+    .book-image img { max-width: 180px; }
+    .book-info h3 { font-size: 1.3rem; }
+    .book-info p { font-size: 1rem; line-height: 1.8; }
+    .book-features-list li { font-size: 0.95rem; padding: 10px 0; }
+    .shamail-gallery img { max-width: 160px !important; }
     .hero h1 { font-size: 1.7rem; }
     .hero h1 span { font-size: 1.1rem; }
     .logo { font-size: 1.5rem; }
