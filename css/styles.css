@@ -286,6 +286,7 @@ body.grab-scroll .menu-toggle {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    z-index: 1;
     background:
         linear-gradient(180deg, rgba(10, 10, 20, 0.85) 0%, rgba(13, 27, 42, 0.9) 50%, rgba(27, 38, 59, 0.85) 100%),
         url('https://images.unsplash.com/photo-1564769625905-50e93615e769?w=1920&q=80') center/cover no-repeat;
@@ -2084,6 +2085,11 @@ footer .heart {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        z-index: 9999;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
     }
 
     .menu-toggle {
@@ -2092,6 +2098,7 @@ footer .heart {
         left: auto;
         top: auto;
         transform: none;
+        z-index: 10000;
     }
 
     .nav-links {
@@ -2099,7 +2106,7 @@ footer .heart {
         top: 100%;
         left: 0;
         right: 0;
-        background: linear-gradient(180deg, rgba(10, 10, 20, 0.98) 0%, rgba(13, 27, 42, 0.98) 100%);
+        background: linear-gradient(180deg, rgba(10, 10, 20, 0.99) 0%, rgba(13, 27, 42, 0.99) 100%);
         backdrop-filter: blur(20px);
         flex-direction: column;
         gap: 0;
@@ -2111,6 +2118,7 @@ footer .heart {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease, padding 0.4s ease;
+        z-index: 9998;
     }
 
     .nav-links.active {
