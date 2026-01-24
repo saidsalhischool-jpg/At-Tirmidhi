@@ -72,18 +72,9 @@ body {
     position: relative;
 }
 
+/* Decorative pattern removed for cleaner look */
 .arabesque-border::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 60px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 60'%3E%3Cpath d='M150 5 Q170 25 150 45 Q130 25 150 5' fill='none' stroke='%23d4af37' stroke-width='1.5'/%3E%3Cpath d='M120 15 Q140 30 120 45 Q100 30 120 15' fill='none' stroke='%23d4af37' stroke-width='1'/%3E%3Cpath d='M180 15 Q200 30 180 45 Q160 30 180 15' fill='none' stroke='%23d4af37' stroke-width='1'/%3E%3Cpath d='M90 20 Q105 32 90 44 Q75 32 90 20' fill='none' stroke='%23d4af37' stroke-width='0.8'/%3E%3Cpath d='M210 20 Q225 32 210 44 Q195 32 210 20' fill='none' stroke='%23d4af37' stroke-width='0.8'/%3E%3Ccircle cx='150' cy='25' r='3' fill='%23d4af37'/%3E%3Ccircle cx='120' cy='30' r='2' fill='%23d4af37'/%3E%3Ccircle cx='180' cy='30' r='2' fill='%23d4af37'/%3E%3Cline x1='50' y1='30' x2='85' y2='30' stroke='%23d4af37' stroke-width='1'/%3E%3Cline x1='215' y1='30' x2='250' y2='30' stroke='%23d4af37' stroke-width='1'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.6;
+    display: none;
 }
 
 /* ============ GEOMETRIC PATTERN OVERLAY ============ */
@@ -657,8 +648,8 @@ section {
 
 /* Decorative Title Container */
 .section-header h2 {
-    font-family: 'Aref Ruqaa', 'Amiri', serif;
-    font-size: 3.2rem;
+    font-family: 'Cairo', 'Amiri', sans-serif;
+    font-size: 2.8rem;
     font-weight: 700;
     color: var(--gold-royal);
     margin-bottom: 25px;
@@ -667,40 +658,21 @@ section {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    text-shadow:
-        0 0 40px rgba(212, 175, 55, 0.4),
-        0 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
 }
 
 
-/* Stars on Both Sides of Title */
+/* Stars on Both Sides of Title - Hidden for cleaner look */
 .section-title-wrapper {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: 15px;
 }
 
 .section-title-wrapper .star-decoration {
-    color: var(--gold-royal);
-    font-size: 1.8rem;
-    opacity: 0.9;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-    animation: starPulse 3s ease-in-out infinite;
-}
-
-.section-title-wrapper .star-decoration:first-child {
-    animation-delay: 0s;
-}
-
-.section-title-wrapper .star-decoration:last-child {
-    animation-delay: 1.5s;
-}
-
-@keyframes starPulse {
-    0%, 100% { opacity: 0.7; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.15); }
+    display: none;
 }
 
 /* Title Text with Inline Stars */
