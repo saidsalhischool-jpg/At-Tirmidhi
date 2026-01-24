@@ -57,6 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (window.innerWidth <= 768) {
             const currentScroll = window.pageYOffset;
+            navbar.style.zIndex = '9999';
+            navbar.style.position = 'fixed';
             if (currentScroll > 100) {
                 navbar.style.padding = '8px 25px';
             } else {
@@ -64,6 +66,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // Ensure navbar is always visible on mobile on page load
+    if (window.innerWidth <= 768) {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.style.zIndex = '9999';
+            navbar.style.position = 'fixed';
+        }
+    }
 
     // Smooth scroll for nav links (for same-page anchors)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
