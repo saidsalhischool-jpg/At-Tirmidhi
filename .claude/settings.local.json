@@ -15,7 +15,15 @@
       "Skill(remotion-best-practices)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git branch:*)",
+      "Bash(gh repo view:*)",
+      "Bash(git mv:*)",
+      "WebFetch(domain:www.freepik.com)",
+      "Bash(unzip:*)"
     ]
   }
 }
