@@ -77,6 +77,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Smooth scroll for nav links (for same-page anchors)
+    const smoothScrollToSection = (targetElement) => {
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 60;
+        const additionalOffset = 20; // Extra space for better readability
+        const totalOffset = navbarHeight + additionalOffset;
+
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - totalOffset;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    };
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -85,11 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                const offsetTop = target.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+                smoothScrollToSection(target);
             }
         });
     });
