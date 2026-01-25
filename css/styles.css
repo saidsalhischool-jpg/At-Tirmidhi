@@ -2704,96 +2704,104 @@ footer .heart {
     .footer-school .school-logo { width: 60px; height: 60px; }
 }
 
-/* ============ CARD ZOOM FUNCTIONALITY ============ */
-.card-zoom-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    z-index: 9998;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-    backdrop-filter: blur(10px);
-}
+/* ============ CARD ZOOM FUNCTIONALITY - DESKTOP ONLY ============ */
 
-.card-zoom-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.card-zoomed {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) scale(1.15) !important;
-    z-index: 9999 !important;
-    max-width: 90vw !important;
-    max-height: 85vh !important;
-    overflow: auto !important;
-    box-shadow: 0 30px 100px rgba(212, 175, 55, 0.3), 0 0 0 2px var(--gold-royal) !important;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-/* Specific adjustments for different card types when zoomed */
-.islamic-card.card-zoomed {
-    max-width: 550px !important;
-}
-
-.bio-card.card-zoomed {
-    max-width: 450px !important;
-}
-
-.date-box.card-zoomed {
-    transform: translate(-50%, -50%) scale(1.5) !important;
-}
-
-.timeline-item.card-zoomed {
-    max-width: 600px !important;
-}
-
-.scholar-card.card-zoomed {
-    max-width: 350px !important;
-    transform: translate(-50%, -50%) scale(1.3) !important;
-}
-
-.stat-card.card-zoomed {
-    transform: translate(-50%, -50%) scale(1.4) !important;
-}
-
-.book-feature.card-zoomed {
-    max-width: 95vw !important;
-    max-height: 90vh !important;
-    transform: translate(-50%, -50%) scale(1) !important;
-}
-
-.method-card.card-zoomed {
-    max-width: 450px !important;
-    transform: translate(-50%, -50%) scale(1.2) !important;
-}
-
-.death-card.card-zoomed {
-    max-width: 500px !important;
-}
-
-.category-item.card-zoomed {
-    transform: translate(-50%, -50%) scale(1.5) !important;
-}
-
-/* Mobile adjustments for zoomed cards */
-@media (max-width: 768px) {
-    .card-zoomed {
-        transform: translate(-50%, -50%) scale(1) !important;
-        max-width: 95vw !important;
-        max-height: 80vh !important;
+/* Base state for zoomable cards */
+@media (min-width: 769px) {
+    .zoomable-card {
+        cursor: pointer;
+        transition:
+            transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+            box-shadow 0.35s ease,
+            z-index 0s;
+        transform-origin: center center;
+        position: relative;
     }
 
-    .date-box.card-zoomed,
-    .stat-card.card-zoomed,
-    .scholar-card.card-zoomed,
+    /* Hover effect - subtle preview */
+    .zoomable-card:hover {
+        transform: scale(1.02);
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Zoomed state - card scales up in place */
+    .zoomable-card.card-zoomed {
+        transform: scale(1.12);
+        z-index: 1000;
+        box-shadow:
+            0 25px 80px rgba(0, 0, 0, 0.5),
+            0 0 0 2px var(--gold-royal),
+            0 0 60px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Prevent hover effect when zoomed */
+    .zoomable-card.card-zoomed:hover {
+        transform: scale(1.12);
+    }
+
+    /* Specific scale adjustments for different card types */
+    .date-box.card-zoomed {
+        transform: scale(1.25);
+    }
+    .date-box.card-zoomed:hover {
+        transform: scale(1.25);
+    }
+
+    .stat-card.card-zoomed {
+        transform: scale(1.2);
+    }
+    .stat-card.card-zoomed:hover {
+        transform: scale(1.2);
+    }
+
+    .scholar-card.card-zoomed {
+        transform: scale(1.15);
+    }
+    .scholar-card.card-zoomed:hover {
+        transform: scale(1.15);
+    }
+
     .category-item.card-zoomed {
-        transform: translate(-50%, -50%) scale(1.1) !important;
+        transform: scale(1.3);
+    }
+    .category-item.card-zoomed:hover {
+        transform: scale(1.3);
+    }
+
+    .method-card.card-zoomed {
+        transform: scale(1.1);
+    }
+    .method-card.card-zoomed:hover {
+        transform: scale(1.1);
+    }
+
+    .book-feature.card-zoomed {
+        transform: scale(1.05);
+    }
+    .book-feature.card-zoomed:hover {
+        transform: scale(1.05);
+    }
+
+    .timeline-content.card-zoomed,
+    .timeline-item.card-zoomed {
+        transform: scale(1.08);
+    }
+    .timeline-content.card-zoomed:hover,
+    .timeline-item.card-zoomed:hover {
+        transform: scale(1.08);
+    }
+}
+
+/* Disable zoom on mobile */
+@media (max-width: 768px) {
+    .zoomable-card {
+        cursor: default;
+    }
+    .zoomable-card.card-zoomed {
+        transform: none !important;
+        z-index: auto !important;
+        box-shadow: inherit !important;
     }
 }

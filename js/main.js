@@ -243,65 +243,82 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Card Zoom Functionality
-    const zoomableCards = document.querySelectorAll('.islamic-card, .bio-card, .date-box, .timeline-item, .scholar-card, .stat-card, .book-feature, .method-card, .death-card, .category-item');
+    // Card Zoom Functionality - Desktop Only
+    const initCardZoom = () => {
+        // Only enable on desktop (width > 768px)
+        if (window.innerWidth <= 768) return;
 
-    // Create overlay for zoomed cards
-    const overlay = document.createElement('div');
-    overlay.className = 'card-zoom-overlay';
-    document.body.appendChild(overlay);
+        const zoomableCards = document.querySelectorAll(
+            '.islamic-card, .bio-card, .date-box, .timeline-item, .timeline-content, ' +
+            '.scholar-card, .stat-card, .book-feature, .method-card, .death-card, .category-item'
+        );
 
-    let currentZoomedCard = null;
+        let currentZoomedCard = null;
 
-    zoomableCards.forEach(card => {
-        card.style.cursor = 'pointer';
-
-        card.addEventListener('click', function(e) {
-            // Don't zoom if clicking on a link or button inside the card
-            if (e.target.closest('a, button, video, iframe')) {
-                return;
-            }
-
-            e.stopPropagation();
-
-            if (this.classList.contains('card-zoomed')) {
-                // Unzoom
-                this.classList.remove('card-zoomed');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
+        const closeZoomedCard = () => {
+            if (currentZoomedCard) {
+                currentZoomedCard.classList.remove('card-zoomed');
                 currentZoomedCard = null;
-            } else {
-                // Close any previously zoomed card
-                if (currentZoomedCard) {
-                    currentZoomedCard.classList.remove('card-zoomed');
+            }
+        };
+
+        zoomableCards.forEach(card => {
+            // Add zoomable class for styling
+            card.classList.add('zoomable-card');
+
+            card.addEventListener('click', function(e) {
+                // Skip if on mobile
+                if (window.innerWidth <= 768) return;
+
+                // Don't zoom if clicking on interactive elements
+                if (e.target.closest('a, button, video, iframe, input, textarea')) {
+                    return;
                 }
 
-                // Zoom this card
-                this.classList.add('card-zoomed');
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                currentZoomedCard = this;
+                e.stopPropagation();
+
+                if (this.classList.contains('card-zoomed')) {
+                    // Unzoom - return to original state
+                    this.classList.remove('card-zoomed');
+                    currentZoomedCard = null;
+                } else {
+                    // Close any previously zoomed card first
+                    closeZoomedCard();
+
+                    // Zoom this card in place
+                    this.classList.add('card-zoomed');
+                    currentZoomedCard = this;
+                }
+            });
+        });
+
+        // Close zoomed card when clicking outside
+        document.addEventListener('click', function(e) {
+            if (currentZoomedCard && !currentZoomedCard.contains(e.target)) {
+                closeZoomedCard();
             }
         });
-    });
 
-    // Close zoomed card when clicking overlay
-    overlay.addEventListener('click', function() {
-        if (currentZoomedCard) {
-            currentZoomedCard.classList.remove('card-zoomed');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-            currentZoomedCard = null;
-        }
-    });
+        // Close zoomed card with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeZoomedCard();
+            }
+        });
+    };
 
-    // Close zoomed card with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && currentZoomedCard) {
-            currentZoomedCard.classList.remove('card-zoomed');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-            currentZoomedCard = null;
-        }
+    // Initialize card zoom
+    initCardZoom();
+
+    // Re-initialize on resize (to handle desktop/mobile switch)
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Remove zoomed state on resize
+            document.querySelectorAll('.card-zoomed').forEach(card => {
+                card.classList.remove('card-zoomed');
+            });
+        }, 250);
     });
 });
