@@ -242,4 +242,66 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.add('active');
         }
     });
+
+    // Card Zoom Functionality
+    const zoomableCards = document.querySelectorAll('.islamic-card, .bio-card, .date-box, .timeline-item, .scholar-card, .stat-card, .book-feature, .method-card, .death-card, .category-item');
+
+    // Create overlay for zoomed cards
+    const overlay = document.createElement('div');
+    overlay.className = 'card-zoom-overlay';
+    document.body.appendChild(overlay);
+
+    let currentZoomedCard = null;
+
+    zoomableCards.forEach(card => {
+        card.style.cursor = 'pointer';
+
+        card.addEventListener('click', function(e) {
+            // Don't zoom if clicking on a link or button inside the card
+            if (e.target.closest('a, button, video, iframe')) {
+                return;
+            }
+
+            e.stopPropagation();
+
+            if (this.classList.contains('card-zoomed')) {
+                // Unzoom
+                this.classList.remove('card-zoomed');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                currentZoomedCard = null;
+            } else {
+                // Close any previously zoomed card
+                if (currentZoomedCard) {
+                    currentZoomedCard.classList.remove('card-zoomed');
+                }
+
+                // Zoom this card
+                this.classList.add('card-zoomed');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                currentZoomedCard = this;
+            }
+        });
+    });
+
+    // Close zoomed card when clicking overlay
+    overlay.addEventListener('click', function() {
+        if (currentZoomedCard) {
+            currentZoomedCard.classList.remove('card-zoomed');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            currentZoomedCard = null;
+        }
+    });
+
+    // Close zoomed card with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && currentZoomedCard) {
+            currentZoomedCard.classList.remove('card-zoomed');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            currentZoomedCard = null;
+        }
+    });
 });

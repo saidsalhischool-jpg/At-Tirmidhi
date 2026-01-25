@@ -2703,3 +2703,97 @@ footer .heart {
     .footer-team-names span { padding: 5px 10px; font-size: 0.85rem; }
     .footer-school .school-logo { width: 60px; height: 60px; }
 }
+
+/* ============ CARD ZOOM FUNCTIONALITY ============ */
+.card-zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.card-zoom-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card-zoomed {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(1.15) !important;
+    z-index: 9999 !important;
+    max-width: 90vw !important;
+    max-height: 85vh !important;
+    overflow: auto !important;
+    box-shadow: 0 30px 100px rgba(212, 175, 55, 0.3), 0 0 0 2px var(--gold-royal) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Specific adjustments for different card types when zoomed */
+.islamic-card.card-zoomed {
+    max-width: 550px !important;
+}
+
+.bio-card.card-zoomed {
+    max-width: 450px !important;
+}
+
+.date-box.card-zoomed {
+    transform: translate(-50%, -50%) scale(1.5) !important;
+}
+
+.timeline-item.card-zoomed {
+    max-width: 600px !important;
+}
+
+.scholar-card.card-zoomed {
+    max-width: 350px !important;
+    transform: translate(-50%, -50%) scale(1.3) !important;
+}
+
+.stat-card.card-zoomed {
+    transform: translate(-50%, -50%) scale(1.4) !important;
+}
+
+.book-feature.card-zoomed {
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+}
+
+.method-card.card-zoomed {
+    max-width: 450px !important;
+    transform: translate(-50%, -50%) scale(1.2) !important;
+}
+
+.death-card.card-zoomed {
+    max-width: 500px !important;
+}
+
+.category-item.card-zoomed {
+    transform: translate(-50%, -50%) scale(1.5) !important;
+}
+
+/* Mobile adjustments for zoomed cards */
+@media (max-width: 768px) {
+    .card-zoomed {
+        transform: translate(-50%, -50%) scale(1) !important;
+        max-width: 95vw !important;
+        max-height: 80vh !important;
+    }
+
+    .date-box.card-zoomed,
+    .stat-card.card-zoomed,
+    .scholar-card.card-zoomed,
+    .category-item.card-zoomed {
+        transform: translate(-50%, -50%) scale(1.1) !important;
+    }
+}
