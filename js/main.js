@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const smoothScrollToSection = (targetElement) => {
         const navbar = document.querySelector('.navbar');
         const navbarHeight = navbar ? navbar.offsetHeight : 60;
-        const additionalOffset = 20; // Extra space for better readability
+        const additionalOffset = 10; // Extra space for better readability
         const totalOffset = navbarHeight + additionalOffset;
 
         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - totalOffset;
