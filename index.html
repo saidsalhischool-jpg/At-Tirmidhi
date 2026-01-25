@@ -130,9 +130,46 @@
         </div>
 
         <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
-            <div class="hero-card">
-                <div class="hero-card-inner">
-                    <!-- Profile Image at Top -->
+            <div class="islamic-frame-container">
+                <!-- Islamic Frame SVG -->
+                <svg class="islamic-frame-svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#d4af37"/>
+                            <stop offset="50%" stop-color="#b8860b"/>
+                            <stop offset="100%" stop-color="#d4af37"/>
+                        </linearGradient>
+                        <filter id="frameShadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,0,0,0.4)"/>
+                        </filter>
+                    </defs>
+                    <!-- Outer frame -->
+                    <path class="frame-outer" d="M200 20
+                        Q260 20 280 60 Q320 40 340 80 Q380 100 380 140
+                        Q380 200 380 200
+                        Q380 260 340 280 Q360 320 320 340 Q300 380 260 380
+                        Q200 380 200 380
+                        Q140 380 100 340 Q80 360 60 320 Q20 300 20 260
+                        Q20 200 20 200
+                        Q20 140 60 100 Q40 80 80 60 Q100 20 140 20
+                        Q200 20 200 20 Z"
+                        fill="none" stroke="url(#frameGradient)" stroke-width="4" filter="url(#frameShadow)"/>
+                    <!-- Inner frame -->
+                    <path class="frame-inner" d="M200 45
+                        Q250 45 267 78 Q300 62 315 92 Q352 108 352 145
+                        Q352 200 352 200
+                        Q352 255 315 272 Q330 302 300 318 Q283 352 250 352
+                        Q200 352 200 352
+                        Q150 352 117 318 Q100 332 85 302 Q48 285 48 250
+                        Q48 200 48 200
+                        Q48 145 85 108 Q70 92 100 78 Q117 45 150 45
+                        Q200 45 200 45 Z"
+                        fill="rgba(10, 10, 20, 0.95)" stroke="url(#frameGradient)" stroke-width="2"/>
+                </svg>
+
+                <!-- Content inside frame -->
+                <div class="islamic-frame-content">
+                    <!-- Profile Image -->
                     <div class="hero-profile-integrated">
                         <div class="profile-frame">
                             <img src="profilTirmidi.jpg" alt="الإمام الترمذي" class="profile-img">
@@ -150,9 +187,7 @@
                         </h2>
                         <span class="badge-subtitle">سخّر حياته لخدمة سنة النبي ﷺ، فجمع الأحاديث، وبيّن درجتها، وربطها بالفقه والعمل</span>
                     </div>
-
                 </div>
-                <div class="hero-card-arch"></div>
             </div>
             <div class="hero-dates">
                 <div class="date-box" data-aos="fade-left" data-aos-delay="300">
