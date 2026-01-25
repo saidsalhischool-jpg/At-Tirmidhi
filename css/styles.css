@@ -2528,12 +2528,18 @@ footer .heart {
     .book-image { display: flex; justify-content: center; }
     .book-image img { max-width: 220px; width: 100%; }
     .book-badge {
-        position: relative;
-        top: auto;
-        right: auto;
+        position: absolute;
+        top: 10px;
+        right: 10px;
         transform: none;
         display: inline-block;
-        margin-bottom: 15px;
+        margin-bottom: 0;
+        padding: 6px 14px;
+        font-size: 0.75rem;
+        border-radius: 20px;
+    }
+    .book-image {
+        position: relative;
     }
     .book-info h3 { font-size: 1.6rem; margin-bottom: 15px; }
     .book-info p { font-size: 1rem; line-height: 2; margin-bottom: 15px; }
