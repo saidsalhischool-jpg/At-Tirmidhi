@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const zoomableCards = document.querySelectorAll(
             '.islamic-card, .bio-card, .date-box, .timeline-item, .timeline-content, ' +
-            '.scholar-card, .stat-card, .book-feature, .method-card, .death-card, .category-item'
+            '.scholar-card, .stat-card, .book-feature, .method-card, .death-card, .category-item, .trial-content'
         );
 
         let currentZoomedCard = null;

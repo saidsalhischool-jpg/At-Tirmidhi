@@ -2792,6 +2792,13 @@ footer .heart {
     .timeline-item.card-zoomed:hover {
         transform: scale(1.08);
     }
+
+    .trial-content.card-zoomed {
+        transform: scale(1.08);
+    }
+    .trial-content.card-zoomed:hover {
+        transform: scale(1.08);
+    }
 }
 
 /* Disable zoom on mobile */
