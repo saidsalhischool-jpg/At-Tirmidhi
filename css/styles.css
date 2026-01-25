@@ -160,14 +160,14 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 50px;
+    gap: 28px;
     list-style: none;
 }
 
 .nav-links a {
     color: var(--text-light);
     text-decoration: none;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-family: 'Amiri', serif;
     position: relative;
     padding: 8px 0;
@@ -2228,8 +2228,8 @@ footer .heart {
     .scholars-grid { grid-template-columns: 1fr; gap: 50px; }
     .method-cards { grid-template-columns: repeat(2, 1fr); }
     .navbar { padding: 12px 30px; }
-    .nav-links { gap: 30px; }
-    .nav-links a { font-size: 1.3rem; }
+    .nav-links { gap: 22px; }
+    .nav-links a { font-size: 1.05rem; }
 }
 
 /* Tablet Landscape */
