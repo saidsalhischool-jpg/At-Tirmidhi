@@ -384,61 +384,140 @@ body.grab-scroll .menu-toggle {
     max-width: 1000px;
 }
 
-/* Islamic Frame Container */
-.islamic-frame-container {
+/* ============ ISLAMIC CARD DESIGN ============ */
+.islamic-card {
     position: relative;
-    display: inline-block;
-    width: 450px;
-    height: 450px;
-    margin-bottom: 40px;
-}
-
-.islamic-frame-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.islamic-frame-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 75%;
-    height: 75%;
-    padding: 20px;
+    padding: 60px 50px 50px;
+    margin-bottom: 50px;
+    background: linear-gradient(180deg,
+        rgba(15, 20, 35, 0.95) 0%,
+        rgba(10, 15, 25, 0.98) 100%);
+    border: 2px solid var(--gold-royal);
+    border-radius: 20px;
+    max-width: 500px;
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, 0.3),
+        0 0 30px rgba(212, 175, 55, 0.15),
+        0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-.islamic-frame-content .hero-profile-integrated {
+/* Profile Section */
+.islamic-card-profile {
     position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin-bottom: 20px;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 30px;
 }
 
-.islamic-frame-content .hero-badge {
-    margin-bottom: 0;
-    padding: 15px 25px;
-    max-width: 100%;
+.islamic-card-profile .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--gold-royal);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
 }
 
-.islamic-frame-content .hero-title {
-    font-size: 1.6rem;
-    gap: 12px;
+.profile-outer-ring {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border: 2px solid var(--gold-royal);
+    border-radius: 50%;
+    opacity: 0.6;
 }
 
-.islamic-frame-content .badge-subtitle {
+.profile-inner-ring {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 1px solid var(--gold-royal);
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+/* Content Section */
+.islamic-card-content {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.islamic-card-title {
+    font-family: 'Cairo', 'Amiri', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-royal);
+    margin: 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.star-decoration {
+    color: var(--gold-royal);
     font-size: 1rem;
-    line-height: 1.7;
+    opacity: 0.8;
+}
+
+.islamic-card-text {
+    font-family: 'Amiri', serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 2;
+    margin: 0;
+    max-width: 400px;
+}
+
+/* Corner Decorations */
+.corner-decoration {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: var(--gold-royal);
+    border-style: solid;
+    border-width: 0;
+    opacity: 0.7;
+}
+
+.corner-decoration.top-left {
+    top: 15px;
+    left: 15px;
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 8px;
+}
+
+.corner-decoration.top-right {
+    top: 15px;
+    right: 15px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-top-right-radius: 8px;
+}
+
+.corner-decoration.bottom-left {
+    bottom: 15px;
+    left: 15px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-bottom-left-radius: 8px;
+}
+
+.corner-decoration.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-bottom-right-radius: 8px;
 }
 
 /* Legacy Hero Card - kept for compatibility */
@@ -2308,30 +2387,56 @@ footer .heart {
     .hero h1 { font-size: 2.2rem; }
     .hero h1 span { font-size: 1.4rem; }
 
-    /* Islamic Frame Mobile */
-    .islamic-frame-container {
-        width: 320px;
-        height: 320px;
+    /* Islamic Card Mobile */
+    .islamic-card {
+        padding: 40px 25px 35px;
+        max-width: 90%;
+        margin-bottom: 30px;
     }
-    .islamic-frame-content .hero-title {
-        font-size: 1.2rem;
-        gap: 8px;
+    .islamic-card-profile {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 25px;
     }
-    .islamic-frame-content .badge-subtitle {
-        font-size: 0.85rem;
-        line-height: 1.6;
+    .profile-outer-ring {
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
     }
-    .islamic-frame-content .profile-frame {
-        width: 100px;
-        height: 100px;
+    .profile-inner-ring {
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
     }
-    .islamic-frame-content .profile-ring {
-        width: 120px;
-        height: 120px;
+    .islamic-card-title {
+        font-size: 1.5rem;
+        gap: 10px;
     }
-    .islamic-frame-content .profile-ring-2 {
-        width: 135px;
-        height: 135px;
+    .islamic-card-text {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+    .corner-decoration {
+        width: 20px;
+        height: 20px;
+    }
+    .corner-decoration.top-left,
+    .corner-decoration.top-right {
+        top: 10px;
+    }
+    .corner-decoration.bottom-left,
+    .corner-decoration.bottom-right {
+        bottom: 10px;
+    }
+    .corner-decoration.top-left,
+    .corner-decoration.bottom-left {
+        left: 10px;
+    }
+    .corner-decoration.top-right,
+    .corner-decoration.bottom-right {
+        right: 10px;
     }
     .hero-subtitle { font-size: 1.2rem; line-height: 2; margin-bottom: 30px; }
     .hero-dates { flex-direction: column; gap: 20px; }
