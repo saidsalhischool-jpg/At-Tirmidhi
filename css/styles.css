@@ -510,23 +510,35 @@ body.grab-scroll .menu-toggle {
 
 .hero-badge {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    padding: 16px 45px;
+    gap: 12px;
+    padding: 20px 40px;
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
     border: 1px solid rgba(212, 175, 55, 0.4);
-    border-radius: 50px;
+    border-radius: 20px;
     color: var(--gold-royal);
     font-size: 1.4rem;
     margin-bottom: 30px;
     backdrop-filter: blur(10px);
     animation: shimmer 3s ease-in-out infinite;
+    max-width: 600px;
 }
 
 .hero-badge svg {
     width: 26px;
     height: 26px;
     fill: var(--gold-royal);
+}
+
+.badge-subtitle {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-light);
+    opacity: 0.85;
+    line-height: 1.8;
+    text-align: center;
+    margin-top: 5px;
 }
 
 @keyframes shimmer {
