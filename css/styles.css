@@ -390,18 +390,46 @@ body.grab-scroll .menu-toggle {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 50px 50px;
+    padding: 50px 60px 80px;
     margin-bottom: 50px;
     background: linear-gradient(180deg,
         rgba(15, 20, 35, 0.95) 0%,
         rgba(10, 15, 25, 0.98) 100%);
-    border: 2px solid var(--gold-royal);
-    border-radius: 20px;
-    max-width: 500px;
+    border: none;
+    max-width: 420px;
+    /* Inverted diamond shape - pointed at bottom */
+    clip-path: polygon(50% 0%, 100% 15%, 100% 75%, 50% 100%, 0% 75%, 0% 15%);
     box-shadow:
-        0 0 0 1px rgba(212, 175, 55, 0.3),
         0 0 30px rgba(212, 175, 55, 0.15),
         0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Diamond border effect */
+.islamic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, var(--gold-royal), var(--gold-dark));
+    clip-path: polygon(50% 0%, 100% 15%, 100% 75%, 50% 100%, 0% 75%, 0% 15%);
+    z-index: -1;
+    padding: 2px;
+}
+
+.islamic-card::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: linear-gradient(180deg,
+        rgba(15, 20, 35, 0.98) 0%,
+        rgba(10, 15, 25, 1) 100%);
+    clip-path: polygon(50% 0%, 100% 15%, 100% 75%, 50% 100%, 0% 75%, 0% 15%);
+    z-index: -1;
 }
 
 /* Profile Section */
@@ -477,15 +505,9 @@ body.grab-scroll .menu-toggle {
     max-width: 400px;
 }
 
-/* Corner Decorations */
+/* Corner Decorations - hidden with diamond shape */
 .corner-decoration {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-color: var(--gold-royal);
-    border-style: solid;
-    border-width: 0;
-    opacity: 0.7;
+    display: none;
 }
 
 .corner-decoration.top-left {
@@ -2389,50 +2411,38 @@ footer .heart {
 
     /* Islamic Card Mobile */
     .islamic-card {
-        padding: 40px 25px 35px;
-        max-width: 90%;
+        padding: 35px 30px 60px;
+        max-width: 320px;
         margin-bottom: 30px;
     }
     .islamic-card-profile {
-        width: 140px;
-        height: 140px;
-        margin-bottom: 25px;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
     }
     .profile-outer-ring {
-        top: -10px;
-        left: -10px;
-        right: -10px;
-        bottom: -10px;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
     }
     .profile-inner-ring {
-        top: -5px;
-        left: -5px;
-        right: -5px;
-        bottom: -5px;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
     }
     .islamic-card-title {
-        font-size: 1.5rem;
-        gap: 10px;
+        font-size: 1.2rem;
+        gap: 8px;
     }
     .islamic-card-text {
-        font-size: 1rem;
-        line-height: 1.8;
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
+    /* Hide corner decorations - using diamond shape instead */
     .corner-decoration {
-        width: 20px;
-        height: 20px;
-    }
-    .corner-decoration.top-left,
-    .corner-decoration.top-right {
-        top: 10px;
-    }
-    .corner-decoration.bottom-left,
-    .corner-decoration.bottom-right {
-        bottom: 10px;
-    }
-    .corner-decoration.top-left,
-    .corner-decoration.bottom-left {
-        left: 10px;
+        display: none;
     }
     .corner-decoration.top-right,
     .corner-decoration.bottom-right {
