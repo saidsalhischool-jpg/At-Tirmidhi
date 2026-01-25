@@ -19,6 +19,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -120,25 +121,41 @@ body {
 .logo {
     font-family: 'Amiri', serif;
     font-size: 1.6rem;
+    font-weight: 700;
     color: var(--gold-royal);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 12px;
-    text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    gap: 14px;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.logo:hover {
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+    transform: scale(1.02);
 }
 
 .logo-icon {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-icon svg {
     width: 100%;
     height: 100%;
-    fill: var(--gold-royal);
-    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+    filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.5));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo:hover .logo-icon svg {
+    filter: drop-shadow(0 0 8px rgba(244, 228, 186, 0.8)) drop-shadow(0 0 16px rgba(212, 175, 55, 0.5));
+    transform: scale(1.08);
 }
 
 .nav-links {
@@ -377,6 +394,7 @@ body.grab-scroll .menu-toggle {
 .hero-card-inner {
     position: relative;
     padding: 210px 80px 60px;
+    margin-top: 30px;
     background: linear-gradient(180deg, rgba(10, 15, 30, 0.85) 0%, rgba(15, 25, 45, 0.75) 100%);
     border: 2px solid rgba(212, 175, 55, 0.4);
     border-radius: 20px 20px 50% 50% / 20px 20px 30% 30%;
@@ -530,10 +548,13 @@ body.grab-scroll .menu-toggle {
 .hero h1 span {
     color: var(--gold-royal);
     display: block;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 400;
-    margin-top: 10px;
+    margin-top: 20px;
     font-family: 'Amiri', serif;
+    letter-spacing: 3px;
+    opacity: 0.9;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
 }
 
 .hero-subtitle {
@@ -2088,6 +2109,37 @@ footer .heart {
 
 /* Mobile - CRITICAL NAVBAR FIX */
 @media (max-width: 768px) {
+    /* Prevent horizontal overflow */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    /* Contain all sections */
+    section, .hero, .hero-content, .hero-card {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Hide decorative elements that cause overflow */
+    .mihrab-frame::before {
+        display: none !important;
+    }
+
+    /* Ensure fixed elements don't cause overflow */
+    .islamic-symbols, .celestial-bg {
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+
+    /* Fix scroll down arrow positioning */
+    .scroll-down {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
     /* Force navbar visibility */
     .navbar {
         padding: 10px 20px !important;
@@ -2107,10 +2159,13 @@ footer .heart {
 
     .menu-toggle {
         display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         position: relative !important;
         z-index: 100000 !important;
         width: 45px;
         height: 45px;
+        flex-shrink: 0;
     }
 
     .nav-links {
@@ -2161,8 +2216,8 @@ footer .heart {
     .logo-icon { width: 35px; height: 35px; }
 
     /* Hero Section Mobile */
-    .hero { padding-top: 70px; }
-    .hero-content { padding: 0 15px; }
+    .hero { padding-top: 70px; overflow: hidden; }
+    .hero-content { padding: 0 15px; max-width: 100%; width: 100%; }
     .hero h1 { font-size: 2.2rem; }
     .hero h1 span { font-size: 1.4rem; }
     .hero-subtitle { font-size: 1.2rem; line-height: 2; margin-bottom: 30px; }
@@ -2171,12 +2226,14 @@ footer .heart {
     .date-box .year { font-size: 2.5rem; }
 
     /* Hero card responsive */
+    .hero-card { max-width: 100%; }
     .hero-card-inner { padding: 120px 40px 45px; }
     .profile-frame { width: 130px; height: 130px; }
     .hero-profile-integrated { top: -40px; }
     .profile-ring { width: 150px; height: 150px; }
     .profile-ring-2 { width: 170px; height: 170px; }
     .hero-card-inner .hero-badge { margin-top: 15px; font-size: 0.95rem; }
+    .mihrab-frame::before { width: 100%; max-width: 350px; }
 
     /* Sections */
     section { padding: 70px 20px; }

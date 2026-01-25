@@ -46,10 +46,16 @@
         <a href="index.html" class="logo">
             <div class="logo-icon">
                 <svg viewBox="0 0 100 100">
-                    <path d="M50 5 L50 25 M50 75 L50 95 M5 50 L25 50 M75 50 L95 50"/>
-                    <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="3"/>
-                    <path d="M50 20 A30 30 0 0 1 80 50" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <polygon points="50,25 53,33 62,33 55,38 58,47 50,42 42,47 45,38 38,33 47,33"/>
+                    <defs>
+                        <linearGradient id="goldGradBio" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f4e4ba"/>
+                            <stop offset="50%" stop-color="#d4af37"/>
+                            <stop offset="100%" stop-color="#b8860b"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="38" fill="url(#goldGradBio)"/>
+                    <circle cx="62" cy="50" r="30" fill="#0a0a14"/>
+                    <polygon points="24,42 26,47 32,47 27,51 29,57 24,53 19,57 21,51 16,47 22,47" fill="url(#goldGradBio)"/>
                 </svg>
             </div>
             الإمام الترمذي
