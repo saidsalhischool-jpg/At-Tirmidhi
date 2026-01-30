@@ -332,13 +332,98 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
 
-    // Shuffle team names (Fisher-Yates)
+    // Animated team name shuffle (FLIP technique)
     document.querySelectorAll('.footer-team-names').forEach(container => {
-        const names = Array.from(container.children);
-        for (let i = names.length - 1; i > 0; i--) {
+        // Initial shuffle (instant, no animation)
+        const initNames = Array.from(container.children);
+        for (let i = initNames.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [names[i], names[j]] = [names[j], names[i]];
+            [initNames[i], initNames[j]] = [initNames[j], initNames[i]];
         }
-        names.forEach(name => container.appendChild(name));
+        initNames.forEach(n => container.appendChild(n));
+
+        let animInterval = null;
+        let isAnimating = false;
+
+        function swapTwo() {
+            if (isAnimating) return;
+            const spans = Array.from(container.children);
+            if (spans.length < 2) return;
+
+            let a = Math.floor(Math.random() * spans.length);
+            let b;
+            do { b = Math.floor(Math.random() * spans.length); } while (b === a);
+
+            const elA = spans[a];
+            const elB = spans[b];
+            isAnimating = true;
+
+            // FIRST — record current positions
+            const rectA = elA.getBoundingClientRect();
+            const rectB = elB.getBoundingClientRect();
+
+            // Swap DOM nodes
+            const nextA = elA.nextSibling;
+            const nextB = elB.nextSibling;
+            if (nextA === elB) {
+                container.insertBefore(elB, elA);
+            } else if (nextB === elA) {
+                container.insertBefore(elA, elB);
+            } else {
+                container.insertBefore(elB, nextA);
+                container.insertBefore(elA, nextB);
+            }
+
+            // INVERT — apply inverse transform so they look unmoved
+            const newRectA = elA.getBoundingClientRect();
+            const newRectB = elB.getBoundingClientRect();
+
+            elA.style.transition = 'none';
+            elB.style.transition = 'none';
+            elA.style.transform = 'translate(' + (rectA.left - newRectA.left) + 'px,' + (rectA.top - newRectA.top) + 'px)';
+            elB.style.transform = 'translate(' + (rectB.left - newRectB.left) + 'px,' + (rectB.top - newRectB.top) + 'px)';
+            elA.classList.add('name-swapping');
+            elB.classList.add('name-swapping');
+
+            // PLAY — animate to final position
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    var ease = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    elA.style.transition = ease;
+                    elB.style.transition = ease;
+                    elA.style.transform = '';
+                    elB.style.transform = '';
+                });
+            });
+
+            // Cleanup
+            setTimeout(function() {
+                elA.style.transition = '';
+                elA.style.transform = '';
+                elB.style.transition = '';
+                elB.style.transform = '';
+                elA.classList.remove('name-swapping');
+                elB.classList.remove('name-swapping');
+                isAnimating = false;
+            }, 850);
+        }
+
+        // Start/stop animation based on visibility
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    if (!animInterval) {
+                        animInterval = setInterval(swapTwo, 3000);
+                    }
+                } else {
+                    if (animInterval) {
+                        clearInterval(animInterval);
+                        animInterval = null;
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(container);
     });
 });

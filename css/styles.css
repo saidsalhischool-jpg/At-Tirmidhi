@@ -2125,13 +2125,21 @@ footer::after {
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
     border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: 25px;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-team-names span:hover {
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
-    transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);
+}
+
+.footer-team-names span.name-swapping {
+    z-index: 10;
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
 }
 
 .footer-school {
