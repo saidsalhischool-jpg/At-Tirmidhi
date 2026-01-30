@@ -331,4 +331,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, 250);
     });
+
+    // Shuffle team names (Fisher-Yates)
+    document.querySelectorAll('.footer-team-names').forEach(container => {
+        const names = Array.from(container.children);
+        for (let i = names.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [names[i], names[j]] = [names[j], names[i]];
+        }
+        names.forEach(name => container.appendChild(name));
+    });
 });

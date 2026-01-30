@@ -387,12 +387,20 @@ body.grab-scroll .menu-toggle {
 
 .hero-layout {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
+    width: 100%;
+    max-width: 750px;
 }
 
-.hero-layout .date-box {
+.date-boxes-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-boxes-row .date-box {
     flex-shrink: 0;
 }
 
@@ -409,7 +417,6 @@ body.grab-scroll .menu-toggle {
         rgba(10, 15, 25, 0.98) 100%);
     border: 2px solid var(--gold-royal);
     border-radius: 20px;
-    max-width: 500px;
     box-shadow:
         0 0 0 1px rgba(212, 175, 55, 0.3),
         0 0 30px rgba(212, 175, 55, 0.15),
@@ -2451,11 +2458,8 @@ footer .heart {
         right: 10px;
     }
     .hero-subtitle { font-size: 1.2rem; line-height: 2; margin-bottom: 30px; }
-    .hero-layout { flex-direction: column; gap: 20px; }
-    .hero-layout .date-box { order: 1; }
-    .hero-layout .islamic-card { order: 0; }
-    .hero-layout .date-birth { order: 1; }
-    .hero-layout .date-death { order: 2; }
+    .hero-layout { gap: 20px; max-width: 100%; }
+    .date-boxes-row { justify-content: space-between; }
     .date-box { padding: 20px 35px; }
     .date-box .year { font-size: 2rem; }
 
@@ -2629,8 +2633,9 @@ footer .heart {
     .section-header h2 { font-size: 1.9rem; }
     .section-header p { font-size: 1rem; }
 
-    .date-box { padding: 20px 30px; }
-    .date-box .year { font-size: 2.2rem; }
+    .date-boxes-row { justify-content: space-between; }
+    .date-box { padding: 15px 25px; }
+    .date-box .year { font-size: 1.8rem; }
 
     .category-item { flex: 0 1 100%; max-width: 100%; }
 
