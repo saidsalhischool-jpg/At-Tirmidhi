@@ -2311,9 +2311,13 @@ footer .heart {
     }
 
     /* Contain all sections */
-    section, .hero, .hero-content, .hero-card {
+    section, .hero, .hero-card {
         max-width: 100vw !important;
         overflow-x: hidden !important;
+    }
+    .hero-content {
+        max-width: 100% !important;
+        box-sizing: border-box;
     }
 
     /* Hide decorative elements that cause overflow */
@@ -2416,9 +2420,8 @@ footer .heart {
 
     /* Islamic Card Mobile */
     .islamic-card {
-        padding: 40px 25px 35px;
-        max-width: 90%;
-        margin-bottom: 30px;
+        padding: 35px 20px 30px;
+        margin-bottom: 0;
     }
     .islamic-card-profile {
         width: 140px;
@@ -2442,7 +2445,7 @@ footer .heart {
         gap: 10px;
     }
     .islamic-card-text {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         line-height: 1.8;
     }
     .corner-decoration {
@@ -2466,10 +2469,12 @@ footer .heart {
         right: 10px;
     }
     .hero-subtitle { font-size: 1.2rem; line-height: 2; margin-bottom: 30px; }
-    .hero-layout { gap: 20px; max-width: 100%; }
-    .date-boxes-row { justify-content: space-between; }
-    .date-box { padding: 20px 35px; }
-    .date-box .year { font-size: 2rem; }
+    .hero-layout { gap: 15px; max-width: 100%; }
+    .date-boxes-row { justify-content: space-between; gap: 10px; }
+    .date-boxes-row .date-box { flex-shrink: 1; min-width: 0; }
+    .date-box { padding: 15px 20px; }
+    .date-box .year { font-size: 1.8rem; }
+    .date-box .label { font-size: 0.9rem; }
 
     /* Hero card responsive */
     .hero-card { max-width: 100%; }
@@ -2641,9 +2646,14 @@ footer .heart {
     .section-header h2 { font-size: 1.9rem; }
     .section-header p { font-size: 1rem; }
 
-    .date-boxes-row { justify-content: space-between; }
-    .date-box { padding: 15px 25px; }
-    .date-box .year { font-size: 1.8rem; }
+    .islamic-card { padding: 30px 15px 25px; }
+    .islamic-card-profile { width: 120px; height: 120px; }
+    .islamic-card-title { font-size: 1.3rem; }
+    .islamic-card-text { font-size: 1.05rem; }
+    .hero-layout { gap: 12px; }
+    .date-box { padding: 12px 15px; }
+    .date-box .year { font-size: 1.5rem; }
+    .date-box .label { font-size: 0.8rem; }
 
     .category-item { flex: 0 1 100%; max-width: 100%; }
 
@@ -2667,6 +2677,17 @@ footer .heart {
     .hero h1 { font-size: 1.6rem; }
     .hero h1 span { font-size: 1.1rem; }
     .hero-subtitle { font-size: 1rem; }
+
+    .hero-content { padding: 0 10px; }
+    .hero-layout { gap: 10px; }
+    .islamic-card { padding: 25px 12px 20px; border-radius: 15px; }
+    .islamic-card-profile { width: 100px; height: 100px; margin-bottom: 20px; }
+    .islamic-card-title { font-size: 1.15rem; }
+    .islamic-card-text { font-size: 0.95rem; }
+    .corner-decoration { width: 16px; height: 16px; }
+    .date-box { padding: 10px 12px; border-radius: 15px; }
+    .date-box .year { font-size: 1.3rem; }
+    .date-box .label { font-size: 0.75rem; }
 
     section { padding: 50px 12px; }
     .section-header { margin-bottom: 40px; }
